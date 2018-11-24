@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <ImageView fx:id="fondo" fitHeight="495.0" fitWidth="914.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/05.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="dogs" fitHeight="99.0" fitWidth="114.0" layoutX="56.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/dogSp.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cats" fitHeight="114.0" fitWidth="118.0" layoutX="259.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/cats.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fish" fitHeight="114.0" fitWidth="114.0" layoutX="490.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/fish.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="users" fitHeight="114.0" fitWidth="114.0" layoutX="145.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/HombreMujeres.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="info" fitHeight="114.0" fitWidth="64.0" layoutX="572.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/informacion.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="tips" fitHeight="96.0" fitWidth="71.0" layoutX="382.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../data/tips.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
