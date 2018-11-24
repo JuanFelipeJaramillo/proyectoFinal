@@ -4,10 +4,15 @@ public class Store {
 
 	private User raiz;
 	private Mascotas raizM; 
+	private Inventario raizI;
+	
+	private Inventario reco;
 
 	public Store() {
 		raiz = null;
 		raizM = null;
+		raizI = null;
+		this.reco = null;
 	}
 
 	public User getRaiz() {
@@ -18,8 +23,23 @@ public class Store {
 		this.raiz = raiz;
 	}
 
-	// se encarga del registro de los clientes
+	public Mascotas getRaizM() {
+		return raizM;
+	}
 
+	public void setRaizM(Mascotas raizM) {
+		this.raizM = raizM;
+	}
+
+	public Inventario getRaizI() {
+		return raizI;
+	}
+
+	public void setRaizI(Inventario raizI) {
+		this.raizI = raizI;
+	}
+
+	// se encarga del registro de los clientes
 	public void agregarUser(User r, User nuevo) {
 
 		if (r == null) {
@@ -95,23 +115,10 @@ public class Store {
 		
 	}
 	
-	
-	public void agregarMascota(Mascotas reco, Mascotas anterior, Mascotas add) {
+	public void agregarInventario(String tipoProducto, String nombreProducto, String codigoProducto, double precioProducto, int unidadesInventario) {
 		
-		Mascotas sig = reco.getSiguiente();
+		Inventario nuevo = new Inventario(tipoProducto, nombreProducto, codigoProducto, precioProducto, unidadesInventario);
 		
-		if(reco == null) {
-			reco = add;
-		}
-		else {
-			
-			if(sig != null) {
-				
-			}
-
-		
-			
-		}
 		
 	}
 	
@@ -121,10 +128,7 @@ public class Store {
 		Mascotas add = new Mascotas(nombre, edad, sexo, raza, tipo);
 		Mascotas reco = this.raizM;
 		Mascotas anterion = null;
-		
-		
-		
-		
+			
 	}
 
 	
