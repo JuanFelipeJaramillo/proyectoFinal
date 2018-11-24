@@ -2,8 +2,8 @@ package modelo;
 
 public class Inventario {
 	
-	private Inventario anterior;
-	private Inventario siguiente;
+	private Inventario derecha;
+	private Inventario izquierda;
 	
 	private String tipoProducto;
 	private String nombreProducto;
@@ -19,8 +19,8 @@ public class Inventario {
 		this.codigoProducto=codigoProducto;
 		this.precioProducto=precioProducto;
 		this.unidadesInventario=unidadesInventario;
-		anterior = null;
-		siguiente = null;
+		derecha = null;
+		izquierda = null;
 	}
 
 
@@ -74,23 +74,38 @@ public class Inventario {
 	}
 	
 
-	public Inventario getAnterior() {
-		return anterior;
+	public Inventario getDerecha() {
+		return derecha;
 	}
 
 
-	public void setAnterior(Inventario anterior) {
-		this.anterior = anterior;
+	public void setAnterior(Inventario derecha) {
+		this.derecha = derecha;
 	}
 
 
-	public Inventario getSiguiente() {
-		return siguiente;
+	public Inventario getIzquierda() {
+		return izquierda;
 	}
 
 
-	public void setSiguiente(Inventario siguiente) {
-		this.siguiente = siguiente;
+	public void setIzquierda(Inventario izquierda) {
+		this.izquierda = izquierda;
+	}
+	
+	
+	public int compareTo(Inventario a) {
+		int r = 0;
+		
+		if(codigoProducto.compareTo(a.getCodigoProducto()) < 0) {
+			r = 1;
+		}
+		else if(codigoProducto.compareTo(a.getCodigoProducto()) > 0) {
+			r = -1;
+		}
+		
+		return r;
+		
 	}
 
 
