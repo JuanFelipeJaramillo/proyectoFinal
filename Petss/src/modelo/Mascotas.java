@@ -5,22 +5,36 @@ public class Mascotas {
 
 	
 	private Mascotas siguiente;
-	
+
+	public final char PERRO = 'P';
+	public final char GATO = 'G';
+	public final char PEZ = 'F';
+	private char tipoMascota;
 	private String nombre;
 	private int edad;
 	private char sexo;
 	private String raza;
 	
 	
-	public Mascotas (String nombre, int edad, char sexo, String raza) {
+	public Mascotas (String nombre, int edad, char sexo, String raza, char tipoMascota) {
 		
 		this.nombre = nombre;
 		this.edad = edad;
 		this.sexo = sexo;
 		this.raza = raza;
-	
+		this.tipoMascota = tipoMascota;
 		siguiente = null;
 		
+	}
+
+
+	public char getTipoMascota() {
+		return tipoMascota;
+	}
+
+
+	public void setTipoMascota(char tipoMascota) {
+		this.tipoMascota = tipoMascota;
 	}
 
 
@@ -93,11 +107,14 @@ public class Mascotas {
 		}
 	return resultado;	
 	}
+
+
 	@Override
 	public String toString() {
-		return "Mascota [siguiente=" + siguiente + ", nombre=" + nombre + ", edad=" + edad
-				+ ", sexo=" + sexo + ", raza=" + raza + "]";
+		return "Mascotas [siguiente=" + siguiente + ", tipoMascota=" + tipoMascota + ", nombre=" + nombre + ", edad="
+				+ edad + ", sexo=" + sexo + ", raza=" + raza + "]";
 	}
+	
 
 	
 }
