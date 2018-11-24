@@ -12,4 +12,12 @@ public class Producto extends Inventario {
 		
 	}
 
+	public Producto getSiguiente() {
+		return siguiente;
+	}
+
+	public void setSiguiente(Producto siguiente) {
+		this.siguiente = siguiente;
+	}
+
 }
