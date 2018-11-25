@@ -5,11 +5,11 @@ public class Inventario {
 	private Inventario derecha;
 	private Inventario izquierda;
 	
-	private String tipoProducto;
-	private String nombreProducto;
-	private String codigoProducto;
-	private double precioProducto;
-	private int unidadesInventario;
+	protected String tipoProducto;
+	protected String nombreProducto;
+	protected String codigoProducto;
+	protected double precioProducto;
+	protected int unidadesInventario;
 	
 	
 	public Inventario(String tipoProducto, String nombreProducto, String codigoProducto, double precioProducto, int unidadesInventario) {
@@ -79,7 +79,7 @@ public class Inventario {
 	}
 
 
-	public void setAnterior(Inventario derecha) {
+	public void setDerecha(Inventario derecha) {
 		this.derecha = derecha;
 	}
 
@@ -106,6 +106,15 @@ public class Inventario {
 		
 		return r;
 		
+	}
+	
+	public boolean isHoja() {
+		
+		if(izquierda == null && derecha == null) {
+			return true;
+		}
+		
+		return false;
 	}
 
 

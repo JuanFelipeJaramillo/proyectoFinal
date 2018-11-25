@@ -1,10 +1,15 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Store {
 
 	private User raiz;
 	private Mascotas raizM;
 	private Inventario raizI;
+	private Producto primerNodo;
+	private Servicios primerNodoS;
+
 	private int inventarioTotal;
 
 	public Store() {
@@ -12,6 +17,8 @@ public class Store {
 		raizM = null;
 		raizI = null;
 		inventarioTotal = 0;
+		primerNodo = null;
+		primerNodoS = null;
 
 	}
 
@@ -37,6 +44,30 @@ public class Store {
 
 	public void setRaizI(Inventario raizI) {
 		this.raizI = raizI;
+	}
+
+	public Producto getPrimerNodo() {
+		return primerNodo;
+	}
+
+	public void setPrimerNodo(Producto primerNodo) {
+		this.primerNodo = primerNodo;
+	}
+
+	public Servicios getPrimerNodoS() {
+		return primerNodoS;
+	}
+
+	public void setPrimerNodoS(Servicios primerNodoS) {
+		this.primerNodoS = primerNodoS;
+	}
+
+	public int getInventarioTotal() {
+		return inventarioTotal;
+	}
+
+	public void setInventarioTotal(int inventarioTotal) {
+		this.inventarioTotal = inventarioTotal;
 	}
 
 	// se encarga del registro de los clientes
@@ -84,7 +115,7 @@ public class Store {
 		} else {
 			if (reco.compareTo(search) == 1) {
 				searchU(reco.getDerecha(), search);
-				
+
 			} else if (reco.compareTo(search) == -1) {
 				searchU(reco.getIzquierda(), search);
 			}
@@ -147,20 +178,17 @@ public class Store {
 
 	public Inventario searchI(Inventario recoI, Inventario nuevo) {
 		Inventario s = null;
-		
-		if(recoI != null) {
-			 
-			if(recoI.compareTo(nuevo) == 0) {
-				 s = recoI;
-			 }
-			else if(recoI.compareTo(nuevo) == 1) {
-					searchI(recoI.getDerecha(), nuevo);
-				}
-			else {
+
+		if (recoI != null) {
+
+			if (recoI.compareTo(nuevo) == 0) {
+				s = recoI;
+			} else if (recoI.compareTo(nuevo) == 1) {
+				searchI(recoI.getDerecha(), nuevo);
+			} else {
 				searchI(recoI.getIzquierda(), nuevo);
 			}
-			
-			
+
 		}
 
 		return s;
@@ -170,7 +198,8 @@ public class Store {
 	public Inventario searchInventario(String tipoProducto, String nombreProducto, String codigoProducto,
 			double precioProducto, int unidadesInventario) {
 
-		Inventario nuevo = new Inventario(tipoProducto, nombreProducto, codigoProducto, precioProducto, unidadesInventario);
+		Inventario nuevo = new Inventario(tipoProducto, nombreProducto, codigoProducto, precioProducto,
+				unidadesInventario);
 		Inventario recoI = this.getRaizI();
 
 		Inventario buscado = searchI(recoI, nuevo);
@@ -178,9 +207,136 @@ public class Store {
 		return buscado;
 
 	}
-	
-	public  void eliminarInventario() {
+
+	private ArrayList<Inventario> recoInorden(Inventario nodo,ArrayList<Inventario> inOrden) {
 		
+		if (nodo == null) {
+			
+			recoInorden(nodo.getIzquierda(), inOrden);
+			inOrden.add(nodo);
+			recoInorden(nodo.getIzquierda(), inOrden);
+		}
+
+		return inOrden;
+	}
+
+	public void listaProducto() {
+
+		Inventario reco = this.raizI;
+		ArrayList<Inventario> inOrden = null;
+		Producto siguiente = this.primerNodo;
+		Servicios sig = this.primerNodoS;
+
+		inOrden = recoInorden(reco, inOrden);
+
+		for (int i = 0; i < inOrden.size(); i++) {
+			
+			if(inOrden.get(i) != null) {
+				
+				if (inOrden.get(i).tipoProducto.equals("Producto")) {
+
+					if (siguiente == null) {
+
+						siguiente = (Producto) inOrden.get(i);
+					}
+
+				}
+			}
+
+		}
+
+		for (int i = 0; i < inOrden.size(); i++) {
+			
+			if(inOrden.get(i) != null) {
+				
+				if (inOrden.get(i).tipoProducto.equals("Servicios")) {
+
+					if (sig == null) {
+
+						sig = (Servicios) inOrden.get(i);
+					}
+
+				}
+				
+				sig = sig.getSiguiente();
+			}
+
+			
+		}
+
+	}
+	
+	//revisar si funciona
+	
+	public void eliminarP(Inventario hijo, Inventario padre, Inventario found) {
+		
+		if(found.isHoja() == true) {
+			found = null;
+		}
+		else {
+			if(found.getDerecha() == null) {
+				found = found.getIzquierda();
+			}
+			else if(found.getIzquierda() == null) {
+				found = found.getDerecha();
+			}
+			else {
+				
+				if(hijo.isHoja() == true) {
+					hijo.setIzquierda(found.getIzquierda());
+					hijo.setDerecha(found.getDerecha());
+					found = hijo;
+					padre.setIzquierda(null);
+				}
+				
+				eliminarP(hijo.getIzquierda(), padre.getIzquierda(), found);
+				
+			}
+		}
+		
+	}
+
+
+	public void agotadoProductoInventario(Producto buy) {
+		
+		if(buy.isAgotado() == true) {
+			Inventario delete = (Inventario) buy;
+			Inventario recoI = this.raizI;
+			
+			Inventario found = searchI(recoI, delete);
+			Inventario padre = found.getDerecha();
+			
+			
+			Inventario hijo = padre.getIzquierda();
+			
+		}
+		
+	}
+	
+	public void productoAgotado(Producto buy) {
+		
+		if(buy.isAgotado() == true) {
+			Producto sig = this.primerNodo.getSiguiente();
+			Producto atras = this.primerNodo;
+			
+			if(primerNodo.compareTo(buy) == 0) {
+				this.primerNodo = primerNodo.getSiguiente();
+			}
+			
+			while(sig.compareTo(buy) == -1 || sig.compareTo(buy) == 0) {
+				
+				if(sig.compareTo(buy) == 0) {
+					atras.setSiguiente(sig.getSiguiente());
+					sig.setSiguiente(null);
+				}
+				
+				sig = sig.getSiguiente();
+				atras = sig;
+				
+			}
+			
+			
+		}
 	}
 
 	public void agregarMascota(String nombre, int edad, char sexo, String raza, String tipo) {
@@ -189,6 +345,21 @@ public class Store {
 		Mascotas reco = this.raizM;
 		Mascotas anterion = null;
 
+	}
+	
+//Lista de compra cliente
+	
+	public void agregarCompra(Producto codigoP) {
+		
+		
+		Inventario reco = this.raizI;
+		Inventario compra = searchI(reco,codigoP);
+		
+		
+		
+		
+		
+		
 	}
 
 }

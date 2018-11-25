@@ -145,6 +145,13 @@ public class User {
 		
 	}
 	
+	public void comprarProducto(Producto compra) {
+		
+		
+	
+		
+	}
+	
 	
 	//metodos de ordenamientos  y busqueda binaria 
 	public void agregarPets(String nombre, int edad, char sexo, String raza, boolean pedigree) {
@@ -154,9 +161,7 @@ public class User {
 	}
 	
 	
-	public void comprarProducto() {
-		
-	}
+	
 	
 	public void pedirServicios() {
 		
