@@ -15,8 +15,8 @@ public class User {
 	private User izquierda;
 	private User derecha;
 	private ArrayList<Mascotas> pets;
-	private ArrayList<Inventario> productos;
-	private ArrayList<Inventario> servicios;
+	private ArrayList<Producto> productos;
+	private ArrayList<Servicios> servicios;
 	
 	public User(String userName, String password, String apellido, String fechaNacimiento, String eMail, String genero) {
 		this.izquierda = null;
@@ -96,19 +96,19 @@ public class User {
 		return pets;
 	}
 	
-	public ArrayList<Inventario> getProductos() {
+	public ArrayList<Producto> getProductos() {
 		return productos;
 	}
 
-	public void setProductos(ArrayList<Inventario> productos) {
+	public void setProductos(ArrayList<Producto> productos) {
 		this.productos = productos;
 	}
 
-	public ArrayList<Inventario> getServicios() {
+	public ArrayList<Servicios> getServicios() {
 		return servicios;
 	}
 
-	public void setServicios(ArrayList<Inventario> servicios) {
+	public void setServicios(ArrayList<Servicios> servicios) {
 		this.servicios = servicios;
 	}
 
