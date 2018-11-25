@@ -96,9 +96,22 @@ public class User {
 		return pets;
 	}
 	
-	
-	
-	
+	public ArrayList<Inventario> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(ArrayList<Inventario> productos) {
+		this.productos = productos;
+	}
+
+	public ArrayList<Inventario> getServicios() {
+		return servicios;
+	}
+
+	public void setServicios(ArrayList<Inventario> servicios) {
+		this.servicios = servicios;
+	}
+
 	public int compareTo(User n) {
 		// TODO Auto-generated method stub
 		int c = 0;
