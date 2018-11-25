@@ -130,7 +130,7 @@ public class User {
 	}
 	
 	
-	//crear una excepcion de verificacion que iria en el else
+	
 	public int  verificacionUser(String n, String p) {
 	
 		int i = 0;
@@ -146,9 +146,19 @@ public class User {
 	}
 	
 	
+	//metodos de ordenamientos  y busqueda binaria 
 	public void agregarPets(String nombre, int edad, char sexo, String raza, boolean pedigree) {
 		
 		
+		
+	}
+	
+	
+	public void comprarProducto() {
+		
+	}
+	
+	public void pedirServicios() {
 		
 	}
 	
