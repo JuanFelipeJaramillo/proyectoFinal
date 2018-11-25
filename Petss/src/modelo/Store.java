@@ -178,6 +178,10 @@ public class Store {
 		return buscado;
 
 	}
+	
+	public  void eliminarInventario() {
+		
+	}
 
 	public void agregarMascota(String nombre, int edad, char sexo, String raza, String tipo) {
 

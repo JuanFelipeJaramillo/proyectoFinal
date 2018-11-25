@@ -15,6 +15,8 @@ public class User {
 	private User izquierda;
 	private User derecha;
 	private ArrayList<Mascotas> pets;
+	private ArrayList<Inventario> productos;
+	private ArrayList<Inventario> servicios;
 	
 	public User(String userName, String password, String apellido, String fechaNacimiento, String eMail, String genero) {
 		this.izquierda = null;
@@ -93,6 +95,8 @@ public class User {
 	public ArrayList<Mascotas> getPets(){
 		return pets;
 	}
+	
+	
 	
 	
 	public int compareTo(User n) {
